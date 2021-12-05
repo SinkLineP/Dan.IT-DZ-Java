@@ -8,6 +8,10 @@ public class shootToPlace {
   private static Object String;
   private static Object Integer;
 
+  public static void outMatrix(String[] matrix) {
+    System.out.println(Arrays.toString(matrix));
+  }
+
   public static void main(String[] args) {
     System.out.println("All set. Get ready to rumble!");
 
@@ -62,21 +66,17 @@ public class shootToPlace {
 
           if (shootLine == randomLine && shootColumn == randomColumn) {
             matrix[shootLine][shootColumn] = "X";
-            System.out.println(Arrays.toString(matrix[0]));
-            System.out.println(Arrays.toString(matrix[1]));
-            System.out.println(Arrays.toString(matrix[2]));
-            System.out.println(Arrays.toString(matrix[3]));
-            System.out.println(Arrays.toString(matrix[4]));
-            System.out.println(Arrays.toString(matrix[5]));
+            int i;
+            for (i = 0; i < 6; i ++) {
+              outMatrix(matrix[i]);
+            }
             break;
           }
 
-          System.out.println(Arrays.toString(matrix[0]));
-          System.out.println(Arrays.toString(matrix[1]));
-          System.out.println(Arrays.toString(matrix[2]));
-          System.out.println(Arrays.toString(matrix[3]));
-          System.out.println(Arrays.toString(matrix[4]));
-          System.out.println(Arrays.toString(matrix[5]));
+          int i;
+          for (i = 0; i < 6; i ++) {
+            outMatrix(matrix[i]);
+          }
         }
       } else if ((inputNumber).getClass().getSimpleName() == String) {
         System.out.println("Error! It`s not a number, please enter again.");
