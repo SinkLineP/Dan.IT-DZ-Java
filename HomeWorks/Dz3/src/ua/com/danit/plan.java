@@ -1,5 +1,6 @@
 package ua.com.danit;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class plan {
@@ -36,6 +37,7 @@ public class plan {
       }
       inputDay = ScanerDay.next();
 
+
       if ((inputDay).getClass().getSimpleName() != Integer) {
         switch (inputDay.toLowerCase().trim()) {
           case "monday":
@@ -59,10 +61,8 @@ public class plan {
           case "sunday":
             System.out.println("Your tasks for " + inputDay + ": " + scedule[6][1] + "");
             break;
-          case "exit":
-            return;
           default:
-            throw new IllegalStateException("Unexpected value: " + inputDay);
+            return;
         }
       } else if ((inputDay).getClass().getSimpleName() != String) {
         System.out.println("Sorry, I don't understand you, please try again.");
