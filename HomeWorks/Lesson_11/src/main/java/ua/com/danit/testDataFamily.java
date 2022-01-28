@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class testDataFamily {
+  public static Integer countFamily;
   public static void fakeData(Scanner sc, List array) {
     Human father = new Man("Yuri", "Poznokos", 12, 12, 1980, 100);
     Human mother = new Woman("Marina", "Popova", 21, 11, 1982, 100);
@@ -17,9 +18,9 @@ public class testDataFamily {
     family.addChild(childrenBoySecond);
 
     System.out.print("Введите количество семей: ");
-    Integer countFamily = sc.nextInt();
+    countFamily = sc.nextInt();
     for (int i = 0; i < countFamily; i++)
       array.add(family);
-    family.prettyFormat(array);
+//    family.prettyFormat(array);
   }
 }

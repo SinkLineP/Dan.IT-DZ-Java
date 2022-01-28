@@ -1,9 +1,6 @@
 package ua.com.danit;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class ConsoleApp {
   public static Human father;
@@ -11,6 +8,10 @@ public class ConsoleApp {
   public static Human children;
   public static Family family;
   static List<Family> arrFamily = new ArrayList<Family>();
+
+  public static Human childrenBoyFirst;
+  public static Human childrenBoySecond;
+  public static Human childrenGirlFirst;
 
   public static void fatherObj(Scanner sc) {
     System.out.print("Enter father: (example: name, surname, dayOfBirthday, monthOfBirthday, yearOfBirthday, IQ). \n");
@@ -106,12 +107,41 @@ public class ConsoleApp {
     do {
       HelpText.text();
       System.out.print("=> ");
-      switch (scan.nextInt()) {
-        case 1:
+      switch (scan.next()) {
+        case "1":
           System.out.println("Происходит наполнение данными");
-          testDataFamily.fakeData(scan, arrFamily);
+
+          father = new Man("Yuri", "Poznokos", 12, 12, 1980, 100);
+          mother = new Woman("Marina", "Popova", 21, 11, 1982, 100);
+          childrenBoyFirst = new Children("Misha", "Popov",13, 10, 2013, 100, mother, father, "boy", "null", "null");
+          childrenBoySecond = new Children("Artem", "Popov",13, 9, 2003, 55, mother, father, "boy", "null", "null");
+          childrenGirlFirst = new Children("Karina", "Popova",5, 3, 2004, 80, mother, father, "girl", "music", "Friday");
+          family = new Family(mother, father);
+
+          family.addChild(childrenBoyFirst);
+          family.addChild(childrenGirlFirst);
+          family.addChild(childrenBoySecond);
+
+          System.out.print("Введите количество семей: ");
+
+          int countFamily = scan.nextInt();
+          for (int i = 0; i < countFamily; i++)
+            arrFamily.add(family);
+
           System.out.println("Наполнение данными завершено");
+          break;
+        case "2":
+          if (arrFamily.isEmpty()) {
+            System.out.println("данных нет, введите команду под номром '1'");
+          } else {
+            System.out.println();
+            System.out.println("=============");
+            family.prettyFormat(arrFamily);
+          }
+
       }
+
+
       System.out.println("Введите 'start' для продолжения, или 'exit' для выхода");
       System.out.print("=> ");
 //      fatherObj(scan);

@@ -40,6 +40,7 @@ public class Family {
 
     public void prettyFormat(List arrayFamily) {
         for (int j = 0; j < arrayFamily.size(); j++) {
+            System.out.println("Index family: " + j);
             System.out.println("family: \n" +
               "   mother: " + this.mother.prettyFormat() + ", \n" +
               "   father: " + this.father.prettyFormat() + ", \n" +
