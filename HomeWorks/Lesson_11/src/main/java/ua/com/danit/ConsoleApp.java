@@ -9,7 +9,7 @@ public class ConsoleApp {
   public static Family family;
   static List<Family> arrFamily = new ArrayList<Family>();
 
-  public static Human childrenBoyFirst;
+  public static Human childrenTemplate;
   public static Human childrenBoySecond;
   public static Human childrenGirlFirst;
 
@@ -98,9 +98,6 @@ public class ConsoleApp {
     family.addChild(children);
   }
 
-
-
-
   public static void startApp() {
 
     Scanner scan = new Scanner(System.in);
@@ -113,14 +110,8 @@ public class ConsoleApp {
 
           father = new Man("Yuri", "Poznokos", 12, 12, 1980, 100);
           mother = new Woman("Marina", "Popova", 21, 11, 1982, 100);
-          childrenBoyFirst = new Children("Misha", "Popov",13, 10, 2013, 100, mother, father, "boy", "null", "null");
-          childrenBoySecond = new Children("Artem", "Popov",13, 9, 2003, 55, mother, father, "boy", "null", "null");
-          childrenGirlFirst = new Children("Karina", "Popova",5, 3, 2004, 80, mother, father, "girl", "music", "Friday");
+          childrenTemplate = new Children("Misha", "Popov",13, 10, 2013, 100, mother, father, "boy", "null", "null");
           family = new Family(mother, father);
-
-          family.addChild(childrenBoyFirst);
-          family.addChild(childrenGirlFirst);
-          family.addChild(childrenBoySecond);
 
           System.out.print("Введите количество семей: ");
 
