@@ -14,6 +14,42 @@ public class Main {
 
     }
 
+    public static void consoleApp() {
+        HelpText.text();
+
+        Scanner scan = new Scanner(System.in);
+//        do {
+            System.out.print("Enter father: (example: name, surname, dayOfBirthday, monthOfBirthday, yearOfBirthday, IQ). \n");
+            System.out.print("Name => ");
+            String name = scan.next();
+            System.out.print("Surname => ");
+            String surname = scan.next();
+            System.out.print("DayOfBirthday => ");
+            Integer dayOfBirthday = scan.nextInt();
+            System.out.print("MonthOfBirthday => ");
+            Integer monthOfBirthday = scan.nextInt();
+            System.out.print("YearOfBirthday => ");
+            Integer yearOfBirthday = scan.nextInt();
+            System.out.print("IQ => ");
+            Integer IQ = scan.nextInt();
+
+            System.out.printf("father: %s, %s, %d, %d, %d, %d",
+                name,
+                surname,
+                dayOfBirthday,
+                monthOfBirthday,
+                yearOfBirthday,
+                IQ
+            );
+
+            System.out.println();
+
+
+
+
+//        } while (!Objects.equals(scan.next(), "exit"));
+    }
+
     public static void main(String[] args) {
         long usedBytes = Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
 
@@ -60,6 +96,8 @@ public class Main {
             whileGC(10000000);
         }
 
+
+        consoleApp();
         
         Human father = new Man("Yuri", "Poznokos", 12, 12, 1980, 100);
         Human mother = new Woman("Marina", "Popova", 21, 11, 1982, 100);
