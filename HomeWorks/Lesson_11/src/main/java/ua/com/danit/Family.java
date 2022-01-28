@@ -46,8 +46,10 @@ public class Family {
         );
         for (int i = 0; i < childrens.size(); i++)
             System.out.println("        " + childrens.get(i).prettyFormat());
+        System.out.print("   pets: [");
         for (int i = 0; i < Pet.arrPet.size(); i++)
-            System.out.println("   pets: [" + Pet.arrPet.get(i).prettyFormat() + "]");
+            System.out.print(Pet.arrPet.get(i).prettyFormat());
+        System.out.println("]");
     }
 
     @Override

@@ -30,7 +30,7 @@ abstract class Pet implements Foul {
           "age=" + age + ", " +
           "trickLevel=" + trickLevel + ", " +
           "habits=" + Arrays.toString(habits) +
-          "}";
+          "}, ";
         return infoPet;
     }
 

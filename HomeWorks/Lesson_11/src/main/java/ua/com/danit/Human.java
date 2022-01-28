@@ -26,6 +26,8 @@ abstract class Human {
     int day;
     int month;
     String gender;
+    String schedule;
+    String dayName;
 
     public HashMap<String, String> hashMapSchedule() {
         HashMap<String, String> scheduleMap = new HashMap<>();
@@ -249,6 +251,7 @@ class Children extends Human {
         father = null;
         family = null;
         gender = "";
+        schedule = null;
     }
 
     public Children(String name, String surname, int year) {
@@ -283,6 +286,21 @@ class Children extends Human {
         this.gender = gender;
     }
 
+    public Children(String name, String surname, int day, int month, int year, int iq, Human mother, Human father, String gender, String schedule, String dayName) {
+        super();
+        this.name = name;
+        this.surname = surname;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.iq = iq;
+        this.mother = mother;
+        this.father = father;
+        this.gender = gender;
+        this.schedule = schedule;
+        this.dayName = dayName;
+    }
+
     public Human showFather() {
         return father;
     }
@@ -300,6 +318,18 @@ class Children extends Human {
         getAgeHuman(birthDate, year, month, day);
     }
 
+    public HashMap<String, String> hashMapScheduleChildren(String task, String dayWeek) {
+        HashMap<String, String> scheduleMap = new HashMap<>();
+
+        if (task == "null") {
+            return scheduleMap;
+        } else {
+            scheduleMap.put(dayWeek, task);
+        }
+
+        return scheduleMap;
+    }
+
     public String prettyFormat() {
         String dobChildren = day + "/" + month + "/" + year;
         String infoChildren = ("" + this.gender + ": {" +
@@ -307,7 +337,7 @@ class Children extends Human {
           "surname='" + this.surname + "', " +
           "birthDate='" + dobChildren + "', "+
           "iq=" + iq + ", " +
-          "schedule=" + hashMapSchedule() + "}");
+          "schedule=" + hashMapScheduleChildren(schedule, dayName) + "}");
         return infoChildren;
     }
 

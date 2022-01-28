@@ -25,7 +25,7 @@ public class Main {
 
         //filter species
         String[] species = {"UNKNOWN"};
-        String inputPet = "Dog";
+        String inputPet = "domesticcat";
         String newSpecies = inputPet.toUpperCase(Locale.ROOT);
 
         switch (newSpecies) {
@@ -63,9 +63,9 @@ public class Main {
         
         Human father = new Man("Yuri", "Poznokos", 12, 12, 1980, 100);
         Human mother = new Woman("Marina", "Popova", 21, 11, 1982, 100);
-        Human childrenBoyFirst = new Children("Misha", "Popov",13, 10, 2013, 100, new RoboCat("ROBOCAT", "Robic", 4, 76, arrayHabits), mother, father, "boy", new String[][]{{"day1", "day2"}, {"task1", "task2"}});
-        Human childrenBoySecond = new Children("Artem", "Popov",13, 9, 2003, 55, new RoboCat("ROBOCAT", "Robic", 4, 76, arrayHabits), mother, father, "boy", new String[][]{{"day1", "day2"}, {"task1", "task2"}});
-        Human childrenGirlFirst = new Children("Karina", "Popova",5, 3, 2004, 80, new RoboCat("ROBOCAT", "Robic", 4, 76, arrayHabits), mother, father, "girl", new String[][]{{"day1", "day2"}, {"task1", "task2"}});
+        Human childrenBoyFirst = new Children("Misha", "Popov",13, 10, 2013, 100, mother, father, "boy", "null", "null");
+        Human childrenBoySecond = new Children("Artem", "Popov",13, 9, 2003, 55, mother, father, "boy", "null", "null");
+        Human childrenGirlFirst = new Children("Karina", "Popova",5, 3, 2004, 80, mother, father, "girl", "music", "Friday");
         Family family = new Family(mother, father);
 
         family.addChild(childrenBoyFirst);
