@@ -1,10 +1,13 @@
 package ua.com.danit;
 
 import java.text.Format;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 abstract class Pet implements Foul {
+    public static List<Pet> arrPet = new ArrayList<Pet>();
     public static String[] DayOfWeek;
 
     String nickname;
@@ -13,23 +16,26 @@ abstract class Pet implements Foul {
     String[] habits;
     String species;
 
+
     public abstract void eat();
     public abstract String namePet();
     public abstract String SpeciesPet();
     public abstract int AgePet();
     public abstract int trickLevelPet();
 
-    @Override
-    public String toString() {
-        String infoPet = "pets: [{" +
+    public String prettyFormat() {
+        String infoPet = "{" +
           "species=" + species + ", " +
           "nickname=" + nickname + ", " +
           "age=" + age + ", " +
           "trickLevel=" + trickLevel + ", " +
           "habits=" + Arrays.toString(habits) +
-        "}]\n";
-        System.out.println(infoPet);
+          "}";
         return infoPet;
+    }
+
+    public void addPet(Pet pet) {
+        arrPet.add(pet);
     }
 }
 
@@ -65,8 +71,6 @@ class Fish extends Pet {
                 trickLevel,
                 Arrays.toString(habits)
         );
-//        System.out.printf("foul: %s \n", add(""));
-        System.out.println();
     }
 
     @Override

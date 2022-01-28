@@ -66,13 +66,7 @@ abstract class Human {
         }
     }
 
-    @Override
-    public String toString() {
-        String dob = day + "/" + month + "/" + year;
-        String infoHuman = "name: " + name + ", surname: " + surname + ", birthDate: " + dob + ", schedule: " + hashMapSchedule();
-        System.out.println(infoHuman);
-        return infoHuman;
-    }
+
 
     public static void getAgeHuman(long birthDate, int year, int month, int day) {
         SimpleDateFormat YearFormat = new SimpleDateFormat("yyyy");
@@ -306,17 +300,16 @@ class Children extends Human {
         getAgeHuman(birthDate, year, month, day);
     }
 
-//    @Override
-//    public String toString() {
-//        String dobChildren = day + "/" + month + "/" + year;
-//        String infoChildren = ("" + this.gender + ": " +
-//          "name='" + this.name + "', " +
-//          "surname='" + this.surname + "', " +
-//          "birthDate='" + dobChildren + "', "+
-//          "iq=" + iq + ", " +
-//          "schedule={" + hashMapSchedule() + "}\n");
-//        return infoChildren;
-//    }
+    public String prettyFormat() {
+        String dobChildren = day + "/" + month + "/" + year;
+        String infoChildren = ("" + this.gender + ": {" +
+          "name='" + this.name + "', " +
+          "surname='" + this.surname + "', " +
+          "birthDate='" + dobChildren + "', "+
+          "iq=" + iq + ", " +
+          "schedule=" + hashMapSchedule() + "}");
+        return infoChildren;
+    }
 
     public void greetPet() {
         System.out.printf("Привет - %s, это я твоя хозяйка - %s", myPet.namePet(), name);

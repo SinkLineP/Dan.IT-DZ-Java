@@ -1,9 +1,6 @@
 package ua.com.danit;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Family {
     Human mother;
@@ -43,10 +40,14 @@ public class Family {
 
     public void prettyFormat() {
         System.out.println("family: \n" +
-        "   mother: " + this.mother.prettyFormat() + ", \n" +
-        "   father: " + this.father.prettyFormat() + ", \n" +
-        "   childrens: \n"
+          "   mother: " + this.mother.prettyFormat() + ", \n" +
+          "   father: " + this.father.prettyFormat() + ", \n" +
+          "   childrens: "
         );
+        for (int i = 0; i < childrens.size(); i++)
+            System.out.println("        " + childrens.get(i).prettyFormat());
+        for (int i = 0; i < Pet.arrPet.size(); i++)
+            System.out.println("   pets: [" + Pet.arrPet.get(i).prettyFormat() + "]");
     }
 
     @Override
