@@ -38,18 +38,21 @@ public class Family {
 
     }
 
-    public void prettyFormat() {
-        System.out.println("family: \n" +
-          "   mother: " + this.mother.prettyFormat() + ", \n" +
-          "   father: " + this.father.prettyFormat() + ", \n" +
-          "   childrens: "
-        );
-        for (int i = 0; i < childrens.size(); i++)
-            System.out.println("        " + childrens.get(i).prettyFormat());
-        System.out.print("   pets: [");
-        for (int i = 0; i < Pet.arrPet.size(); i++)
-            System.out.print(Pet.arrPet.get(i).prettyFormat());
-        System.out.println("]");
+    public void prettyFormat(List arrayFamily) {
+        for (int j = 0; j < arrayFamily.size(); j++) {
+            System.out.println("family: \n" +
+              "   mother: " + this.mother.prettyFormat() + ", \n" +
+              "   father: " + this.father.prettyFormat() + ", \n" +
+              "   childrens: "
+            );
+            for (int i = 0; i < childrens.size(); i++)
+                System.out.println("        " + childrens.get(i).prettyFormat());
+            System.out.print("   pets: [");
+            for (int i = 0; i < Pet.arrPet.size(); i++)
+                System.out.print(Pet.arrPet.get(i).prettyFormat());
+            System.out.println("]");
+            System.out.println("=============================================");
+        }
     }
 
     @Override
