@@ -21,7 +21,7 @@ public class Family {
     public void deleteChild(int index) {
         if (childrens != null) {
             childrens.remove(index);
-            System.out.println("Deleted! " + childrens);
+            System.out.println("Deleted!");
         }
     }
 

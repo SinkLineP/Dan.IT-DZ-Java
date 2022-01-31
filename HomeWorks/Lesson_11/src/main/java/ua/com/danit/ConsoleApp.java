@@ -1,11 +1,11 @@
 package ua.com.danit;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ConsoleApp {
   public static Human father;
   public static Human mother;
-  public static Human children;
   public static Family family;
   static List<Family> arrFamily = new ArrayList<Family>();
 
@@ -58,46 +58,16 @@ public class ConsoleApp {
       IQ
     );
   }
-  public static void ChildrenObj(Scanner sc) {
-    System.out.print("Enter Children: (example: name, surname, dayOfBirthday, monthOfBirthday, yearOfBirthday, IQ, gender, task, dayOfWeek(example: friday, saturday...)). \n");
-    System.out.print("Name => ");
-    String name = sc.next();
-    System.out.print("Surname => ");
-    String surname = sc.next();
-    System.out.print("DayOfBirthday => ");
-    Integer dayOfBirthday = sc.nextInt();
-    System.out.print("MonthOfBirthday => ");
-    Integer monthOfBirthday = sc.nextInt();
-    System.out.print("YearOfBirthday => ");
-    Integer yearOfBirthday = sc.nextInt();
-    System.out.print("IQ => ");
-    Integer IQ = sc.nextInt();
-    System.out.print("Gender => ");
-    String Gender = sc.next();
-    System.out.print("Task => ");
-    String Task = sc.next();
-    System.out.print("DayOfWeek => ");
-    String dayOfWeek = sc.next();
-
-    children = new Children(
-      name,
-      surname,
-      dayOfBirthday,
-      monthOfBirthday,
-      yearOfBirthday,
-      IQ,
-      mother,
-      father,
-      Gender,
-      Task,
-      dayOfWeek
-    );
-
-    family.addChild(children);
-  }
 
   public static void sendError(String message) {
     System.out.println("Error: " + message);
+  }
+
+  public static void sendEditFamily() {
+    System.out.println("1. Родить ребёнка");
+    System.out.println("2. Вернутся в главное меню");
+    System.out.println("Выберите команду: ");
+    System.out.print("=>");
   }
 
   public static void startApp() {
@@ -115,7 +85,7 @@ public class ConsoleApp {
           for (int i = 0; i < RandomInteger.getRandomNumberForFamily(); i++) {
             father = new Man("Father #" + i, "Surname", 12, 12, 1980, 100);
             mother = new Woman("Mother #" + i, "Surname", 21, 11, 1982, 100);
-            childrenTemplate = new Children("Children #" + i, "Surname",13, 10, 2013, 100, mother, father, "boy", "null", "null");
+            childrenTemplate = new Children("Children #" + i, "Surname", 13, 10, 2013, 100, mother, father, "boy", "null", "null");
             family = new Family(mother, father);
 
             for (int j = 0; j < RandomInteger.getRandomNumberForChildren(); j++) {
@@ -206,8 +176,6 @@ public class ConsoleApp {
           System.out.println("Удаление семьи по индексу (ID).");
 
           for (int i = 0; i < arrFamily.size(); i++) {
-            Family allFamily = arrFamily.get(i);
-
             System.out.println("Family index - " + i);
           }
 
@@ -221,9 +189,66 @@ public class ConsoleApp {
           }
 
           System.out.println("Семья была успешно удалена!");
-      }
+        case "8":
+          System.out.println("Редактирование семьи по индексу (ID).");
 
-    } while (!Objects.equals(cmdNumber, "exit"));
+          for (int i = 0; i < arrFamily.size(); i++) {
+            System.out.println("Family index - " + i);
+          }
+
+          System.out.print("Выберите доступный индекс: ");
+          int editIndexFamily = scan.nextInt();
+
+          for (int i = 0; i < arrFamily.size(); i++) {
+            Family thisFamily = arrFamily.get(i);
+
+            if (editIndexFamily == i) {
+              thisFamily.prettyFormat(i);
+              System.out.println();
+
+              sendEditFamily();
+              int editFamily = scan.nextInt();
+
+              switch (editFamily) {
+                case 1:
+                  System.out.print("Введите количество детей: ");
+                  int countChild = scan.nextInt();
+
+                  for (int j = 0; j < countChild; j++) {
+                    thisFamily.addChild(childrenTemplate);
+                  }
+                  break;
+                case 2:
+                  break;
+              }
+            }
+          }
+        case "9":
+          System.out.print("Введите возраст, после которого удалятся все дети из семей: ");
+          int ageChild = scan.nextInt();
+
+          Date date = new Date();
+          SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+          String dateNow = formatter.format(date);
+
+          for (int i = 0; i < arrFamily.size(); i++) {
+            Family delChildFromFamily = arrFamily.get(i);
+            for (int j = 0; j < delChildFromFamily.childrens.size(); j++) {
+              Human item = arrFamily.get(i).childrens.get(j);
+
+              System.out.println(Integer.parseInt(dateNow) - item.year);
+              if (Integer.parseInt(dateNow) - item.year > ageChild) {
+                for (int k = 0; k < delChildFromFamily.childrens.size(); k++) {
+                  delChildFromFamily.deleteChild(k);
+                  delChildFromFamily.prettyFormat(j);
+                }
+              }
+            }
+          }
+
+        }
+    }
+    while (!Objects.equals(cmdNumber, "exit")) ;
     System.out.println("Программа успешно завершена)");
   }
 }

@@ -68,8 +68,6 @@ abstract class Human {
         }
     }
 
-
-
     public static void getAgeHuman(long birthDate, int year, int month, int day) {
         SimpleDateFormat YearFormat = new SimpleDateFormat("yyyy");
         SimpleDateFormat MonthFormat = new SimpleDateFormat("MM");
@@ -146,7 +144,6 @@ class Man extends Human {
         this.year = year;
         this.iq = iq;
     }
-
     public Human showFather() {
         return father;
     }
@@ -224,7 +221,6 @@ class Woman extends Human {
         System.out.println("Нужно подкраситься");
     }
     public void repairCar() {}
-
     public void describeAge() {
         getAgeHuman(birthDate, year, month, day);
     }
