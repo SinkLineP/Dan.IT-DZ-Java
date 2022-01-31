@@ -1,10 +1,11 @@
 package ua.com.danit;
 
 class RandomInteger {
-  public static int getRandomNumber() {
-    int min = 1;
-    int max = 10;
+  public static int getRandomNumberForChildren() {
+    return (int) ((Math.random() * (10 - 1)) + 1);
+  }
 
-    return (int) ((Math.random() * (max - min)) + min);
+  public static int getRandomNumberForFamily() {
+    return (int) ((Math.random() * (25 - 1)) + 1);
   }
 }

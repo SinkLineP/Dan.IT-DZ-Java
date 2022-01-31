@@ -49,7 +49,7 @@ public class Family {
             for (int i = 0; i < Pet.arrPet.size(); i++)
                 System.out.print(Pet.arrPet.get(i).prettyFormat());
             System.out.println("]");
-            System.out.println("=============================================");
+            System.out.println("================================================================================================");
         }
 
     @Override

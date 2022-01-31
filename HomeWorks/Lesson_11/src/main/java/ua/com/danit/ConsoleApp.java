@@ -10,8 +10,6 @@ public class ConsoleApp {
   static List<Family> arrFamily = new ArrayList<Family>();
 
   public static Human childrenTemplate;
-  public static Human childrenBoySecond;
-  public static Human childrenGirlFirst;
 
   public static void fatherObj(Scanner sc) {
     System.out.print("Enter father: (example: name, surname, dayOfBirthday, monthOfBirthday, yearOfBirthday, IQ). \n");
@@ -98,28 +96,25 @@ public class ConsoleApp {
     family.addChild(children);
   }
 
-  public static int countFamily;
-
   public static void startApp() {
-
     Scanner scan = new Scanner(System.in);
+    String cmdNumber;
+
     do {
       HelpText.text();
       System.out.print("=> ");
-      switch (scan.next()) {
+      cmdNumber = scan.next();
+      switch (cmdNumber) {
         case "1":
           System.out.println("Происходит наполнение данными");
 
-          System.out.print("Введите количество семей: ");
-          countFamily = scan.nextInt();
-
-          for (int i = 0; i < countFamily; i++) {
+          for (int i = 0; i < RandomInteger.getRandomNumberForFamily(); i++) {
             father = new Man("Father #" + i, "Surname", 12, 12, 1980, 100);
             mother = new Woman("Mother #" + i, "Surname", 21, 11, 1982, 100);
             childrenTemplate = new Children("Children #" + i, "Surname",13, 10, 2013, 100, mother, father, "boy", "null", "null");
             family = new Family(mother, father);
 
-            for (int j = 0; j < RandomInteger.getRandomNumber(); j++) {
+            for (int j = 0; j < RandomInteger.getRandomNumberForChildren(); j++) {
               family.addChild(childrenTemplate);
             }
 
@@ -130,28 +125,26 @@ public class ConsoleApp {
           break;
         case "2":
           if (arrFamily.isEmpty()) {
-            System.out.println("данных нет, введите команду под номром '1'");
+            System.out.println("данных нет, введите команду под номером '1'");
           } else {
             System.out.println();
             System.out.println("=============");
             for (int i = 0; i < arrFamily.size(); i++) {
               Family fakeFamily = arrFamily.get(i);
-
               System.out.println("Index family: " + i);
               fakeFamily.prettyFormat();
             }
           }
+          break;
       }
 
-
-      System.out.println("Введите 'start' для продолжения, или 'exit' для выхода");
-      System.out.print("=> ");
 //      fatherObj(scan);
 //      motherObj(scan);
 //      family = new Family(mother, father);
 //      ChildrenObj(scan);
 //      arrFamily.add(family);
 //      family.prettyFormat();
-    } while (!Objects.equals(scan.next(), "exit"));
+    } while (!Objects.equals(cmdNumber, "exit"));
+    System.out.println("Программа успешно завершена)");
   }
 }
