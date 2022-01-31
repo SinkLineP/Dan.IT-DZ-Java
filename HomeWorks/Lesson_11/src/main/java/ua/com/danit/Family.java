@@ -38,7 +38,8 @@ public class Family {
 
     }
 
-    public void prettyFormat() {
+    public void prettyFormat(int index) {
+            System.out.println("Index family: " + index);
             System.out.println("family: \n" +
               "   mother: " + this.mother.prettyFormat() + ", \n" +
               "   father: " + this.father.prettyFormat() + ", \n" +

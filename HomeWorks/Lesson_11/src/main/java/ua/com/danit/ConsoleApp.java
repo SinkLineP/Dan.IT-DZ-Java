@@ -96,6 +96,10 @@ public class ConsoleApp {
     family.addChild(children);
   }
 
+  public static void sendError(String message) {
+    System.out.println("Error: " + message);
+  }
+
   public static void startApp() {
     Scanner scan = new Scanner(System.in);
     String cmdNumber;
@@ -125,14 +129,30 @@ public class ConsoleApp {
           break;
         case "2":
           if (arrFamily.isEmpty()) {
-            System.out.println("данных нет, введите команду под номером '1'");
+            sendError("Массив семей пуст!");
           } else {
             System.out.println();
             System.out.println("=============");
             for (int i = 0; i < arrFamily.size(); i++) {
               Family fakeFamily = arrFamily.get(i);
-              System.out.println("Index family: " + i);
-              fakeFamily.prettyFormat();
+              fakeFamily.prettyFormat(i);
+            }
+          }
+          break;
+        case "3":
+          if (arrFamily.isEmpty()) {
+            sendError("Массив семей пуст!");
+          } else {
+            System.out.print("Отобразить семьи где количество людей больше заданного, введите число: ");
+            int countBigFamily = scan.nextInt();
+            System.out.println();
+
+            for (int i = 0; i < arrFamily.size(); i++) {
+              Family countFamily = arrFamily.get(i);
+
+              if (countFamily.childrens.size() + 2 > countBigFamily) {
+                countFamily.prettyFormat(i);
+              }
             }
           }
           break;
