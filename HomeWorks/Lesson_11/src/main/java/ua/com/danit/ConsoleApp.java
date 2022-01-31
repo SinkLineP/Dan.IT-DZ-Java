@@ -98,6 +98,8 @@ public class ConsoleApp {
     family.addChild(children);
   }
 
+  public static int countFamily;
+
   public static void startApp() {
 
     Scanner scan = new Scanner(System.in);
@@ -108,16 +110,21 @@ public class ConsoleApp {
         case "1":
           System.out.println("Происходит наполнение данными");
 
-          father = new Man("Yuri", "Poznokos", 12, 12, 1980, 100);
-          mother = new Woman("Marina", "Popova", 21, 11, 1982, 100);
-          childrenTemplate = new Children("Misha", "Popov",13, 10, 2013, 100, mother, father, "boy", "null", "null");
-          family = new Family(mother, father);
-
           System.out.print("Введите количество семей: ");
+          countFamily = scan.nextInt();
 
-          int countFamily = scan.nextInt();
-          for (int i = 0; i < countFamily; i++)
+          for (int i = 0; i < countFamily; i++) {
+            father = new Man("Father #" + i, "Surname", 12, 12, 1980, 100);
+            mother = new Woman("Mother #" + i, "Surname", 21, 11, 1982, 100);
+            childrenTemplate = new Children("Children #" + i, "Surname",13, 10, 2013, 100, mother, father, "boy", "null", "null");
+            family = new Family(mother, father);
+
+            for (int j = 0; j < RandomInteger.getRandomNumber(); j++) {
+              family.addChild(childrenTemplate);
+            }
+
             arrFamily.add(family);
+          }
 
           System.out.println("Наполнение данными завершено");
           break;
@@ -127,9 +134,13 @@ public class ConsoleApp {
           } else {
             System.out.println();
             System.out.println("=============");
-            family.prettyFormat(arrFamily);
-          }
+            for (int i = 0; i < arrFamily.size(); i++) {
+              Family fakeFamily = arrFamily.get(i);
 
+              System.out.println("Index family: " + i);
+              fakeFamily.prettyFormat();
+            }
+          }
       }
 
 

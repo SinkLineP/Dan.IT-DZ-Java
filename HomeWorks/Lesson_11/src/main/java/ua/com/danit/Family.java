@@ -38,14 +38,11 @@ public class Family {
 
     }
 
-    public void prettyFormat(List arrayFamily) {
-        for (int j = 0; j < arrayFamily.size(); j++) {
-            System.out.println("Index family: " + j);
+    public void prettyFormat() {
             System.out.println("family: \n" +
               "   mother: " + this.mother.prettyFormat() + ", \n" +
               "   father: " + this.father.prettyFormat() + ", \n" +
-              "   childrens: "
-            );
+              "   childrens: ");
             for (int i = 0; i < childrens.size(); i++)
                 System.out.println("        " + childrens.get(i).prettyFormat());
             System.out.print("   pets: [");
@@ -54,7 +51,6 @@ public class Family {
             System.out.println("]");
             System.out.println("=============================================");
         }
-    }
 
     @Override
     protected void finalize() throws Throwable {
