@@ -190,14 +190,19 @@ public class ConsoleApp {
             }
           }
           break;
+        case "6":
+          System.out.println("Создание новой семьи\n");
+
+          System.out.println("Создание объекта мама");
+          motherObj(scan);
+
+          System.out.println("\nСоздание объекта отец");
+          fatherObj(scan);
+
+          family = new Family(mother, father);
+          arrFamily.add(family);
       }
 
-//      fatherObj(scan);
-//      motherObj(scan);
-//      family = new Family(mother, father);
-//      ChildrenObj(scan);
-//      arrFamily.add(family);
-//      family.prettyFormat();
     } while (!Objects.equals(cmdNumber, "exit"));
     System.out.println("Программа успешно завершена)");
   }
