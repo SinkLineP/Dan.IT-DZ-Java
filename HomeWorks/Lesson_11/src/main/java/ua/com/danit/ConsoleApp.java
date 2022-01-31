@@ -201,6 +201,26 @@ public class ConsoleApp {
 
           family = new Family(mother, father);
           arrFamily.add(family);
+          break;
+        case "7":
+          System.out.println("Удаление семьи по индексу (ID).");
+
+          for (int i = 0; i < arrFamily.size(); i++) {
+            Family allFamily = arrFamily.get(i);
+
+            System.out.println("Family index - " + i);
+          }
+
+          System.out.print("Выберите доступный индекс: ");
+          int indexFamily = scan.nextInt();
+
+          for (int i = 0; i < arrFamily.size(); i++) {
+            if (indexFamily == i) {
+              arrFamily.remove(indexFamily);
+            }
+          }
+
+          System.out.println("Семья была успешно удалена!");
       }
 
     } while (!Objects.equals(cmdNumber, "exit"));
