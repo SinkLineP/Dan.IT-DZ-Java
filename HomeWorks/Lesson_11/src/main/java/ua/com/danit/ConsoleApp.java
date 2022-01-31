@@ -156,6 +156,23 @@ public class ConsoleApp {
             }
           }
           break;
+        case "4":
+          if (arrFamily.isEmpty()) {
+            sendError("Массив семей пуст!");
+          } else {
+            System.out.print("Отобразить семьи где количество людей меньше заданного, введите число: ");
+            int countBigFamily = scan.nextInt();
+            System.out.println();
+
+            for (int i = 0; i < arrFamily.size(); i++) {
+              Family countFamily = arrFamily.get(i);
+
+              if (countFamily.childrens.size() + 2 < countBigFamily) {
+                countFamily.prettyFormat(i);
+              }
+            }
+          }
+          break;
       }
 
 //      fatherObj(scan);
