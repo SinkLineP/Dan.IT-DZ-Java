@@ -314,7 +314,7 @@ class Children extends Human {
         getAgeHuman(birthDate, year, month, day);
     }
 
-    public HashMap<String, String> hashMapScheduleChildren(String task, String dayWeek) {
+    public static HashMap<String, String> hashMapScheduleChildren(String task, String dayWeek) {
         HashMap<String, String> scheduleMap = new HashMap<>();
 
         if (task == "null") {

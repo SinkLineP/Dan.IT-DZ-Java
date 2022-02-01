@@ -51,7 +51,7 @@ public class Family {
                 System.out.print(Pet.arrPet.get(i).prettyFormat());
             System.out.println("]");
             System.out.println("================================================================================================");
-        }
+    }
 
     @Override
     protected void finalize() throws Throwable {

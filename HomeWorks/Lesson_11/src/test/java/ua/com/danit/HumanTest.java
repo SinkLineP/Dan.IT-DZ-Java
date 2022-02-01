@@ -80,4 +80,18 @@ public class HumanTest {
         assertEquals("52 years,7 months,30 days", period.getYears() + " years," + period.getMonths() + " months," + period.getDays() + " days");
         System.out.println("Done! ");
     }
+
+    @Test
+    public void prettyFormat() {
+        String dob = 13 + "/" + 9 + "/" + 2003;
+        String infoHumman =  ("{" +
+          "name='" + "artem" + "', " +
+          "surname='" + "popov" + "', " +
+          "birthDate='" + dob + "', "+
+          "iq=" + 100 + "}");
+
+        System.out.println("Humman formated!");
+
+        assertEquals(infoHumman, "{name='artem', surname='popov', birthDate='13/9/2003', iq=100}");
+    }
 }

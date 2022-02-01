@@ -33,6 +33,7 @@ public class ConsoleApp {
       yearOfBirthday,
       IQ
     );
+
   }
   public static void motherObj(Scanner sc) {
     System.out.print("Enter mother: (example: name, surname, dayOfBirthday, monthOfBirthday, yearOfBirthday, IQ). \n");
