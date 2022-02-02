@@ -82,6 +82,19 @@ class Family {
         return getInfo();
     }
 
+    public void prettyFormat() {
+        System.out.println("family: \n" +
+          "   mother: " + this.mother.toString() + ", \n" +
+          "   father: " + this.father.toString() + ", \n" +
+          "   childrens: ");
+        for (int i = 0; i < children.size(); i++)
+            System.out.println("        " + children.get(i).toString());
+        System.out.print("   pets: [");
+        for (int i = 0; i < pet.size(); i++)
+            pet.toString();
+        System.out.println("]");
+        System.out.println("================================================================================================");
+    }
 
     @Override
     protected void finalize() throws Throwable {

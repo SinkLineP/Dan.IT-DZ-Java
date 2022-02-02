@@ -19,7 +19,7 @@ class FamilyService {
         List<Family> dbGetAllFamilies = familyDao.getAllFamilies();
         for (int i = 0; i < dbGetAllFamilies.size(); i++) {
             System.out.println("Index family - " + i);
-            System.out.println(dbGetAllFamilies.get(i));
+            dbGetAllFamilies.get(i).prettyFormat();
         }
         System.out.println("---------------------------");
     }
