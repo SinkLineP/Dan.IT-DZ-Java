@@ -1,9 +1,14 @@
 package ua.com.danit;
 
-import java.io.InvalidObjectException;
 import java.util.*;
 
 public class ConsoleApp {
+  private Man father;
+  private Man son;
+  private Woman mother;
+  private Family family;
+
+
   public void fatherObj(Scanner sc) {
     System.out.print("Enter father: (example: name, surname, year). \n");
     System.out.print("Name => ");
@@ -13,7 +18,7 @@ public class ConsoleApp {
     System.out.print("Year => ");
     int year = sc.nextInt();
 
-    Man father = new Man(name, surname, year);
+    father = new Man(name, surname, year);
   }
   public void motherObj(Scanner sc) {
     System.out.print("Enter mother: (example: name, surname, year). \n");
@@ -24,7 +29,7 @@ public class ConsoleApp {
     System.out.print("Year => ");
     int year = sc.nextInt();
 
-    Woman mother = new Woman(name, surname, year);
+    mother = new Woman(name, surname, year);
   }
   public void sonObj(Scanner sc) {
     System.out.print("Enter son: (example: name, surname, year, iq). \n");
@@ -35,7 +40,7 @@ public class ConsoleApp {
     System.out.print("Year => ");
     int year = sc.nextInt();
 
-    Man son = new Man(name, surname, year);
+    son = new Man(name, surname, year);
 
     System.out.print("IQ => ");
     int iq = sc.nextInt();
@@ -67,10 +72,10 @@ public class ConsoleApp {
           System.out.println("Происходит наполнение данными");
 
           for (int i = 0; i < rndInteger.getRandomNumberForFamily(); i++) {
-            Man father = new Man("Father #" + i, "Surname", 1980);
-            Woman mother = new Woman("Mother #" + i, "Surname", 1980);
-            Man son = new Man("Son #" + i, "Surname", 2000);
-            Family family = familyController.createNewFamily(mother, father);
+            father = new Man("Father #" + i, "Surname", 1980);
+            mother = new Woman("Mother #" + i, "Surname", 1980);
+            son = new Man("Son #" + i, "Surname", 2000);
+            family = familyController.createNewFamily(mother, father);
 
             for (int j = 0; j < rndInteger.getRandomNumberForChildren(); j++) {
               familyController.adoptChild(family,son);
@@ -112,7 +117,7 @@ public class ConsoleApp {
           System.out.println("\nСоздание объекта отец");
           fatherObj(scan);
 
-//          Family family = familyController.createNewFamily(mother, father);
+          family = familyController.createNewFamily(mother, father);
           break;
         case "7":
           System.out.println("Удаление семьи по индексу (ID).");
@@ -161,7 +166,7 @@ public class ConsoleApp {
 
               sonObj(scan);
 
-//              familyController.adoptChild(adoptFamily, son);
+              familyController.adoptChild(adoptFamily, son);
               familyController.displayAllFamilies();
               break;
             case 3:
@@ -173,7 +178,19 @@ public class ConsoleApp {
           int ageChild = scan.nextInt();
 
           familyController.deleteAllChildrenOlderThen(ageChild);
-        }
+        break;
+        case "10":
+          WorkingWithFiles wwfOne = new WorkingWithFiles();
+          wwfOne.writeToFile(familyController.getAllFamilies());
+          break;
+        case "11":
+          WorkingWithFiles wwfTwo = new WorkingWithFiles();
+          wwfTwo.readFamilyList().stream()
+            .forEach(f -> {
+              familyController.saveFamily(f);
+            });
+          break;
+      }
     }
     while (!Objects.equals(cmdNumber, "exit")) ;
     System.out.println("Программа успешно завершена)");

@@ -1,11 +1,12 @@
 package ua.com.danit;
 
+import java.io.Serializable;
 import java.time.Year;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-class Human {
+class Human implements Serializable {
     String name;
     String surname;
     int year;

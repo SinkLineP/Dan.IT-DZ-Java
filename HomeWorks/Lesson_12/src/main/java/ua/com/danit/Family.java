@@ -3,7 +3,7 @@ package ua.com.danit;
 import java.io.Serializable;
 import java.util.*;
 
-class Family {
+class Family implements Serializable {
     Human mother;
     Human father;
     ArrayList<Human> children;

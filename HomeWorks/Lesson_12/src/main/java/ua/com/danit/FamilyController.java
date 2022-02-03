@@ -68,4 +68,8 @@ public class FamilyController {
     public void addPet(int i, Pet pet) {
         familyService.addPet(i, pet);
     }
+
+    public void saveFamily(Family family) {
+        familyService.saveFamily(family);
+    }
 }

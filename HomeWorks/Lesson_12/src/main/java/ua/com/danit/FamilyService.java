@@ -21,7 +21,6 @@ class FamilyService {
           System.out.println("Index family - " + i);
           dbGetAllFamilies.get(i).prettyFormat();
         }
-        System.out.println("---------------------------");
     }
 
     List<Family> getFamiliesBiggerThan(int amount) {
@@ -131,5 +130,9 @@ class FamilyService {
 
     void addPet(int index, Pet pet) {
         getFamilyById(index).setPet(pet);
+    }
+
+    public void saveFamily(Family family) {
+      familyDao.saveFamily(family);
     }
 }
