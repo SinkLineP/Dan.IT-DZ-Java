@@ -118,6 +118,9 @@ public class ConsoleApp {
           fatherObj(scan);
 
           family = familyController.createNewFamily(mother, father);
+
+          System.out.println("-----Семья создана успешно------");
+          family.prettyFormat();
           break;
         case "7":
           System.out.println("Удаление семьи по индексу (ID).");
@@ -144,7 +147,7 @@ public class ConsoleApp {
               int editIndexFamily = scan.nextInt();
 
               Family currentFamily = familyController.getFamilyById(editIndexFamily);
-              System.out.println(currentFamily);
+              currentFamily.prettyFormat();
               System.out.println("--------------------");
 
               System.out.print("Введите имя мальчика: ");
@@ -162,7 +165,8 @@ public class ConsoleApp {
               int iFamily = scan.nextInt();
 
               Family adoptFamily = familyController.getFamilyById(iFamily);
-              System.out.println(adoptFamily + "\n-------------");
+              adoptFamily.prettyFormat();
+              System.out.println("--------------");
 
               sonObj(scan);
 
