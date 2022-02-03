@@ -18,8 +18,8 @@ class FamilyService {
         System.out.println("----Displaying families----");
         List<Family> dbGetAllFamilies = familyDao.getAllFamilies();
         for (int i = 0; i < dbGetAllFamilies.size(); i++) {
-            System.out.println("Index family - " + i);
-            dbGetAllFamilies.get(i).prettyFormat();
+          System.out.println("Index family - " + i);
+          dbGetAllFamilies.get(i).prettyFormat();
         }
         System.out.println("---------------------------");
     }
@@ -27,11 +27,12 @@ class FamilyService {
     List<Family> getFamiliesBiggerThan(int amount) {
         List<Family> newFamilies;
         newFamilies = getAllFamilies().stream()
-                .filter(family -> family.countFamily() > amount)
-                .collect(Collectors.toList());
+          .filter(family -> family.countFamily() > amount)
+          .collect(Collectors.toList());
 
         for (int i = 0; i < newFamilies.size(); i++) {
-            System.out.println(newFamilies.get(i));
+          System.out.println("Index family - " + i);
+          newFamilies.get(i).prettyFormat();
         }
         return newFamilies;
     }
@@ -39,11 +40,12 @@ class FamilyService {
     List<Family> getFamiliesLessThan(int amount) {
         List<Family> newFamilies;
         newFamilies = getAllFamilies().stream()
-                .filter(family -> family.countFamily() < amount)
-                .collect(Collectors.toList());
+          .filter(family -> family.countFamily() < amount)
+          .collect(Collectors.toList());
 
         for (int i = 0; i < newFamilies.size(); i++) {
-            System.out.println(newFamilies.get(i));
+          System.out.println("Index family - " + i);
+          newFamilies.get(i).prettyFormat();
         }
         return newFamilies;
     }
@@ -55,7 +57,8 @@ class FamilyService {
           .collect(Collectors.toList());
 
         for (int i = 0; i < newFamiliesy.size(); i++) {
-            System.out.println(newFamiliesy.get(i));
+          System.out.println("Index family - " + i);
+          newFamiliesy.get(i).prettyFormat();
         }
         return newFamiliesy;
     }

@@ -1,12 +1,13 @@
 package ua.com.danit;
 
+import java.io.Serializable;
 import java.util.*;
 
 class Family {
-    private Human mother;
-    private Human father;
-    private ArrayList<Human> children;
-    private HashSet<Pet> pet;
+    Human mother;
+    Human father;
+    ArrayList<Human> children;
+    HashSet<Pet> pet;
 
     Family(Human mother, Human father) {
         this.mother = mother;
@@ -17,7 +18,7 @@ class Family {
         children = new ArrayList<Human>(0);
     }
 
-    private String getInfo() {
+    String getInfo() {
         return String.format("Mother:%s,\nFather:%s,\nChildren:%s,\nPet:%s",
                 Objects.toString(mother), Objects.toString(father), children, pet);
     }
@@ -82,7 +83,7 @@ class Family {
         return getInfo();
     }
 
-    public void prettyFormat() {
+    void prettyFormat() {
         System.out.println("family: \n" +
           "   mother: " + this.mother.toString() + ", \n" +
           "   father: " + this.father.toString() + ", \n" +
@@ -90,10 +91,10 @@ class Family {
         for (int i = 0; i < children.size(); i++)
             System.out.println("        " + children.get(i).toString());
         System.out.print("   pets: [");
-        for (int i = 0; i < pet.size(); i++)
+        for (int l = 0; l < pet.size(); l++)
             pet.toString();
         System.out.println("]");
-        System.out.println("================================================================================================");
+        System.out.println("================================================================================================\n");
     }
 
     @Override

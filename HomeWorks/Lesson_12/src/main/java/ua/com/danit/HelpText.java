@@ -3,7 +3,7 @@ package ua.com.danit;
 import java.util.Scanner;
 
 public class HelpText {
-  public static void text() {
+  public void text() {
     System.out.print(
       "================================================================================================\n" +
       "- 1. Заполнить тестовыми данными (автоматом создать несколько семей и сохранить их в базе) \n" +

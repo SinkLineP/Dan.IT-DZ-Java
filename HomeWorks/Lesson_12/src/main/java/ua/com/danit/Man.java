@@ -1,5 +1,7 @@
 package ua.com.danit;
 
+import java.io.Serializable;
+
 final class Man extends Human {
     Man (
       String name,

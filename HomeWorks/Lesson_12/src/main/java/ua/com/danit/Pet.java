@@ -1,15 +1,16 @@
 package ua.com.danit;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashSet;
 
 abstract class Pet {
-    private Species species;
-    private String nickname;
-    private int age;
-    private int trickLevel;
-    private HashSet<String> habits;
-    private String info;
+    Species species;
+    String nickname;
+    int age;
+    int trickLevel;
+    HashSet<String> habits;
+    String info;
 
     Pet(String nickname, int age, int trickLevel, String... habits) {
         this(nickname);

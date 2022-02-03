@@ -25,7 +25,7 @@ public class FamilyController {
         return familyService.getFamiliesLessThan(i);
     }
 
-    public List<Family>  countFamiliesWithMemberNumber(int i) {
+    public List<Family> countFamiliesWithMemberNumber(int i) {
         return familyService.countFamiliesWithMemberNumber(i);
     }
 

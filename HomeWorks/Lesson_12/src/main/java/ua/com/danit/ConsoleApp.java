@@ -1,15 +1,10 @@
 package ua.com.danit;
 
+import java.io.InvalidObjectException;
 import java.util.*;
 
 public class ConsoleApp {
-  static Human father;
-  static Human mother;
-  static Human son;
-  static FamilyController familyController = new FamilyController();
-  static Family family;
-
-  public static void fatherObj(Scanner sc) {
+  public void fatherObj(Scanner sc) {
     System.out.print("Enter father: (example: name, surname, year). \n");
     System.out.print("Name => ");
     String name = sc.next();
@@ -18,9 +13,9 @@ public class ConsoleApp {
     System.out.print("Year => ");
     int year = sc.nextInt();
 
-    father = new Man(name, surname, year);
+    Man father = new Man(name, surname, year);
   }
-  public static void motherObj(Scanner sc) {
+  public void motherObj(Scanner sc) {
     System.out.print("Enter mother: (example: name, surname, year). \n");
     System.out.print("Name => ");
     String name = sc.next();
@@ -29,9 +24,9 @@ public class ConsoleApp {
     System.out.print("Year => ");
     int year = sc.nextInt();
 
-    mother = new Woman(name, surname, year);
+    Woman mother = new Woman(name, surname, year);
   }
-  public static void sonObj(Scanner sc) {
+  public void sonObj(Scanner sc) {
     System.out.print("Enter son: (example: name, surname, year, iq). \n");
     System.out.print("Name => ");
     String name = sc.next();
@@ -40,44 +35,44 @@ public class ConsoleApp {
     System.out.print("Year => ");
     int year = sc.nextInt();
 
-    son = new Man(name, surname, year);
+    Man son = new Man(name, surname, year);
 
     System.out.print("IQ => ");
     int iq = sc.nextInt();
     son.setIq(iq);
   }
-
-  public static void sendError(String message) {
+  public void sendError(String message) {
     System.out.println("Error: " + message);
   }
-
-  public static void sendEditFamily() {
+  public void sendEditFamily() {
     System.out.println("1. Родить ребёнка");
     System.out.println("2. Усыновить ребенка");
     System.out.println("3. Вернутся в главное меню");
     System.out.println("Выберите команду: ");
     System.out.print("=> ");
   }
-
-  public static void startApp() {
+  public void startApp() {
     Scanner scan = new Scanner(System.in);
     String cmdNumber;
+    FamilyController familyController = new FamilyController();
+    HelpText textCmd = new HelpText();
+    RandomInteger rndInteger = new RandomInteger();
 
     do {
-      HelpText.text();
+      textCmd.text();
       System.out.print("=> ");
       cmdNumber = scan.next();
       switch (cmdNumber) {
         case "1":
           System.out.println("Происходит наполнение данными");
 
-          for (int i = 0; i < RandomInteger.getRandomNumberForFamily(); i++) {
-            father = new Man("Father #" + i, "Surname", 1980);
-            mother = new Woman("Mother #" + i, "Surname", 1980);
-            son = new Man("Son #" + i, "Surname", 2000);
-            family = familyController.createNewFamily(mother, father);
+          for (int i = 0; i < rndInteger.getRandomNumberForFamily(); i++) {
+            Man father = new Man("Father #" + i, "Surname", 1980);
+            Woman mother = new Woman("Mother #" + i, "Surname", 1980);
+            Man son = new Man("Son #" + i, "Surname", 2000);
+            Family family = familyController.createNewFamily(mother, father);
 
-            for (int j = 0; j < RandomInteger.getRandomNumberForChildren(); j++) {
+            for (int j = 0; j < rndInteger.getRandomNumberForChildren(); j++) {
               familyController.adoptChild(family,son);
             }
           }
@@ -117,7 +112,7 @@ public class ConsoleApp {
           System.out.println("\nСоздание объекта отец");
           fatherObj(scan);
 
-          family = familyController.createNewFamily(mother, father);
+//          Family family = familyController.createNewFamily(mother, father);
           break;
         case "7":
           System.out.println("Удаление семьи по индексу (ID).");
@@ -166,7 +161,7 @@ public class ConsoleApp {
 
               sonObj(scan);
 
-              familyController.adoptChild(adoptFamily, son);
+//              familyController.adoptChild(adoptFamily, son);
               familyController.displayAllFamilies();
               break;
             case 3:

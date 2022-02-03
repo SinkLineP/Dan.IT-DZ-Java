@@ -6,14 +6,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Human {
-    private String name;
-    private String surname;
-    private int year;
-    private int iq;
-    private Family family;
-    private String info;
-    private Map<String, String> schedule = initSchedule();
-    private int age;
+    String name;
+    String surname;
+    int year;
+    int iq;
+    Family family;
+    String info;
+    Map<String, String> schedule = initSchedule();
+    int age;
 
     Human() {
         name = "";
